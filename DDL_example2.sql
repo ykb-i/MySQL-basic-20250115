@@ -29,28 +29,32 @@ CREATE TABLE team(
 
 -- 4. 선수 테이블 생성
 CREATE TABLE player(
-  name VARCHAR(15),
+  name VARCHAR(100),
   birth VARCHAR(10),
   position VARCHAR(12),
   uniform_number INT,
-  country VARCHAR(20)
+  country VARCHAR(60)
 );
 
 -- 5. 경기장 테이블 생성
 CREATE TABLE stadium(
-  name VARCHAR(15),
+  name VARCHAR(255),
   address TEXT,
   seats INT
 );
 
 -- 6. 심판 테이블 생성
 CREATE TABLE referee(
-  name VARCHAR(15),
+  name VARCHAR(100),
   birth VARCHAR(10),
-  country VARCHAR(20),
+  country VARCHAR(60),
   position VARCHAR(12)
 );
 
 -- 7. 사용자 정의
 CREATE USER 'football_developer'@'%' IDENTIFIED BY 'foot!@';
 CREATE USER 'football_broadcast'@'%' IDENTIFIED BY 'foot#$';
+
+-- 8. 심판과 선수의 birth 컬럼의 데이터 타입을 DATE로 변경
+ALTER TABLE referee MODIFY COLUMN birth DATE;
+ALTER TABLE player MODIFY COLUMN birth DATE;
